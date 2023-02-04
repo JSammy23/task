@@ -8,13 +8,74 @@
 </head>
 <body>
     <div class="contentBody">
-        <div id="header"></div>
-        <div id="sideBar">
-            <a href="#" class="menu-link select">
-                <p class="menu-link select">All Tasks</p> 
-            </a>
-        </div>
-        <div id="mainBody"></div>
+
+        <header id="header">
+            <!-- Menu mobile controls -->
+            <div class="toggle-menu"></div>
+
+            <!-- Logo -->
+            <p class="logo">Task by JS</p>
+        </header>
+
+        <!-- Sidebar Menu -->
+        <nav id="sidebar-menu">
+
+            <div class="menu-links">
+                <a href="#" class="link menu-link select" data-link-index="0" data-title="all">
+                    <p class="menu-link select">All Tasks</p>
+                </a>
+                <a href="#" class="link menu-link select" data-link-index="1" data-title="today">
+                    <p class="menu-link select">Today</p>
+                </a>
+                <a href="#" class="link menu-link select" data-link-index="2" data-title="week">
+                     <p class="menu-link select">This Week</p>
+                </a>
+            </div>
+        
+        <!-- Projects Nav -->
+            <div class="projects-nav">
+                <div class="projects-nav-title">
+                <p>Projects (<span class="project-count"></span>)</p>
+                </div>
+                <div class="project-links-div">
+                <!-- Projects listed here -->
+                </div>
+            </div>
+            <footer>
+            <!-- My github links here -->
+            </footer>
+        </nav>
+        
+        <!-- Main Content -->
+
+        <main id="mainBody">
+
+            <!-- Title -->
+            <div class="main-title-div">
+                <h1 class="main-title-text"></h1>
+            </div>
+
+            <!-- Tasks -->
+            <div class="tasks-div">
+
+                <!-- Tasks Title -->
+                <div class="tasks-title-div">
+                    <div class="tasks-title">
+                        <p>Tasks (<span class="tasks-count"></span>)</p>
+                    </div>
+                </div>
+
+                <!-- Task List -->
+                <div class="task-list">
+                    <!-- Tasks listed here! -->
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Modal -->
+
     </div>
 </body>
 </html>
