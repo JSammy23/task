@@ -14,7 +14,9 @@ const projects = (() => {
                     note: 'Rain forcasted Thursday morning',
                     dueDate: '2023-02-10',
                     priority: 'normal',
-                    completed: false
+                    completed: false,
+                    project: 'My Project',
+                    taskIndex: 0
                 }
             ]
         });
@@ -26,7 +28,9 @@ const projects = (() => {
                     note: 'Q3 expense report',
                     dueDate: '2023-02-20',
                     priority: 'high',
-                    completed: false
+                    completed: false,
+                    project: 'Work',
+                    taskIndex: 0
                 }
             ]
         })
