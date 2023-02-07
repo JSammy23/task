@@ -173,7 +173,37 @@ const dom = (() => {
         if (target.classList.contains('link')) {
             target.classList.add('selected-link');
         };
+
+        // Project Link
+        if (target.classList.contains('project')) {
+            getTasks('project', index)
+        }
     }
+
+    function showMainTitle(index) {
+        const menuTexts = document.querySelectorAll('.menu-link-text')
+
+        mainTitleText.textContent = menuTexts[index].textContent;
+    };
+
+    function changeMainTitle(target, index) {
+        if (
+            target.classList.contains('menu-link') ||
+            target.classList.contains('menu-link-text')
+        ){
+            showMainTitle(index);
+        };
+
+        if (
+            target.classList.contains('project-link') ||
+            target.classList.contains('project-icon') ||
+            target.classList.contains('project-text') ||
+            target.classList.contains('delete-project') ||
+            target.classList.contains('edit-project')
+        ) {
+            mainTitleText.textContent = projects.projectList[index].title;
+        }
+    };
 
 
 
@@ -182,7 +212,11 @@ const dom = (() => {
 
     return {
         showProjects,
-        selectLink
+        selectLink,
+        getTasks,
+        showTasks,
+        changeMainTitle,
+        showMainTitle
     }
 
 
