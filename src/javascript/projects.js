@@ -1,12 +1,11 @@
 
 
 const projects = (() => {
-    let projectMap;
+    const projectList = [];
 
     // Check local storage and efault project
     if (localStorage.getItem('projects') === null) {
-        projectMap = new Map()
-        projectMap.set('My Project', {
+        projectList.push({
             title: 'My Project',
             tasks: [
                 {
@@ -20,7 +19,7 @@ const projects = (() => {
                 }
             ]
         });
-        projectMap.set('Work', {
+        projectList.push({
             title: 'Work',
             tasks: [
                 {
@@ -35,12 +34,13 @@ const projects = (() => {
             ]
         })
     } else {
-        projectMap = new Map(JSON.parse(localStorage.projectMap));
+        const projectsFromStorage = JSON.parse(localStorage.getItem('projects'));
+        projectsList = projectsFromStorage;
     };
 
-    localStorage.projectMap = JSON.stringify(Array.from(projectMap));
+    localStorage.projectList = JSON.stringify(projectList);
 
-    console.log(projectMap)
+    console.log(projectList)
 
     
 
@@ -70,7 +70,7 @@ const projects = (() => {
     }
 
     return {
-        projectMap,
+        projectList,
         addProject,
         deleteProject
     }
