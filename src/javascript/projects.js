@@ -51,9 +51,7 @@ const projects = (() => {
 
     function addProject(title) {
         const project = Project(title)
-        if (!(projectMap.has(`${title}`))) {
-            projectMap.set(`${title}`, project)
-        } else return
+        projectList.push(project)
         //Display projects
     }
 
@@ -62,9 +60,9 @@ const projects = (() => {
         //Display projects
     }
 
-    function deleteProject(title) {
-        if (projectMap.has(`${title}`)) {
-            projectMap.delete(`${title}`)
+    function deleteProject(index) {
+        if (index > -1) {
+            projectList.splice(index, 1)
         }
         //Display projects
     }
