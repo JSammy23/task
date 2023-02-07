@@ -22,13 +22,13 @@
 
             <div class="menu-links">
                 <a href="#" class="link menu-link select" data-link-index="0" data-title="all">
-                    <p class="menu-link select">All Tasks</p>
+                    <p class="menu-link-text select">All Tasks</p>
                 </a>
                 <a href="#" class="link menu-link select" data-link-index="1" data-title="today">
-                    <p class="menu-link select">Today</p>
+                    <p class="menu-link-text select">Today</p>
                 </a>
                 <a href="#" class="link menu-link select" data-link-index="2" data-title="week">
-                     <p class="menu-link select">This Week</p>
+                     <p class="menu-link-text select">This Week</p>
                 </a>
             </div>
         
@@ -52,7 +52,7 @@
 
             <!-- Title -->
             <div class="main-title-div">
-                <h1 class="main-title-text"></h1>
+                <h1 class="main-title-text">All Tasks</h1>
             </div>
 
             <!-- Tasks -->
@@ -61,7 +61,7 @@
                 <!-- Tasks Title -->
                 <div class="tasks-title-div">
                     <div class="tasks-title">
-                        <p>Tasks (<span class="tasks-count"></span>)</p>
+                        <p>Tasks (<span class="task-count"></span>)</p>
                     </div>
                 </div>
 
@@ -75,7 +75,14 @@
         </main>
 
         <!-- Modal -->
-
+        <div id="modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2 class="modal-main-title"></h2>
+                </div>
+                <div class="modal-content"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
