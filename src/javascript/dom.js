@@ -18,9 +18,13 @@ const dom = (() => {
             const projectLink = document.createElement('a')
             const projectTextDiv = document.createElement('div')
             const projectText = document.createElement('p')
+            const projectIconDiv = document.createElement('div')
+            const projectEditIcon = document.createElement('i')
+            const projectTrashIcon = document.createElement('i')
 
             projectTextDiv.classList.add('project', 'select')
             projectTextDiv.setAttribute('data-link-index', i)
+            projectIconDiv.setAttribute('data-link-index', i)
 
             projectLink.classList.add('link', 'project-link', 'project', 'select');
             projectLink.setAttribute('href', '#');
@@ -30,8 +34,30 @@ const dom = (() => {
             projectText.textContent = projects.projectList[i].title;
             projectText.setAttribute('data-link-index', i);
 
+            projectEditIcon.classList.add(
+                'fa-regular',
+                'fa-pen-to-square',
+                'project',
+                'project-icon',
+                'edit-project',
+                'select',
+                'padding-right'
+            )
+
+            projectTrashIcon.classList.add(
+                'fa-regular',
+                'fa-trash-can',
+                'project',
+                'project-icon',
+                'delete-project',
+                'select'
+            )
+            
+            projectIconDiv.appendChild(projectEditIcon)
+            projectIconDiv.appendChild(projectTrashIcon)
             projectTextDiv.appendChild(projectText)
             projectLink.appendChild(projectTextDiv)
+            projectLink.appendChild(projectIconDiv)
             projectLinksDiv.appendChild(projectLink)
         };
     };
