@@ -51,6 +51,9 @@ body {
 .task-done {
   text-decoration: line-through;
 }
+.padding-right {
+  padding-right: 8px;
+}
 
 /* Nav Bar */
 #sidebar-menu {
