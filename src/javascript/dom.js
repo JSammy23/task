@@ -67,7 +67,7 @@ const dom = (() => {
         let projectIndexEnd;
     
         
-        localStorage.setItem('projects', JSON.stringify(projects.projectsList));
+        localStorage.setItem('projects', JSON.stringify(projects.projectList));
     
         // IF CLICKED ON PROJECT LINK
         if (menuTitle === 'project') {
@@ -75,14 +75,14 @@ const dom = (() => {
           projectIndexEnd = projectIndex + 1;
     
           
-          if (projects.projectsList[projectIndex].tasks.length === 0) {
+          if (projects.projectList[projectIndex].tasks.length === 0) {
             taskCount.textContent = 0;
           }
     
           // IF CLICKED ON MENU LINK
         } else {
           projectIndexStart = 0;
-          projectIndexEnd = projects.projectsList.length;
+          projectIndexEnd = projects.projectList.length;
         };
         showTasks(menuTitle, projectIndexStart, projectIndexEnd);
     };
@@ -95,7 +95,7 @@ const dom = (() => {
         taskList.textContent = '';
 
         for (let i = projectIndexStart; i < projectIndexEnd; i += 1) {
-          for (let j = 0; j < projects.projectsList[i].tasks.length; j += 1) {
+          for (let j = 0; j < projects.projectList[i].tasks.length; j += 1) {
             const taskDiv = document.createElement('div');
             const taskTextDiv = document.createElement('div');
             const taskText = document.createElement('p');
@@ -120,7 +120,7 @@ const dom = (() => {
                 }
             };
 
-            tasknumber += 1;
+            taskNumber += 1;
             taskCount.textContent = taskNumber;
 
             taskDiv.classList.add('task-div', 'hover-element');
@@ -129,13 +129,13 @@ const dom = (() => {
             taskDiv.setAttribute('data-task-index', j);
 
             taskText.classList.add('task-text');
-            taskText.textContent = projects.projectsList[i].tasks[j].title;
+            taskText.textContent = projects.projectList[i].tasks[j].title;
             taskText.setAttribute('data-project-index', i);
             taskText.setAttribute('data-task-index', j);
 
             // Task Date
-            if (projects.projectsList[i].tasks[j].date !== undefined) {
-                taskDate.textContent = projects.projectsList[i].tasks[j].date;
+            if (projects.projectList[i].tasks[j].date !== undefined) {
+                taskDate.textContent = projects.projectList[i].tasks[j].date;
             } else {
                 taskDate.textContent = '';
             }
@@ -147,7 +147,7 @@ const dom = (() => {
             taskList.appendChild(taskDiv);
                 
             // Task Completion
-            if (projects.projectsList[i].tasks[j].completed === false) {
+            if (projects.projectList[i].tasks[j].completed === false) {
                 taskText.classList.remove('task-done');
             } else {
                 taskText.classList.add('task-done')

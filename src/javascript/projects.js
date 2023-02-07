@@ -4,7 +4,7 @@ const projects = (() => {
     const projectList = [];
 
     // Check local storage and efault project
-    if (localStorage.getItem('projects') === null) {
+    if (localStorage.getItem('projectList') === null) {
         projectList.push({
             title: 'My Project',
             tasks: [
@@ -34,7 +34,7 @@ const projects = (() => {
             ]
         })
     } else {
-        const projectsFromStorage = JSON.parse(localStorage.getItem('projects'));
+        const projectsFromStorage = JSON.parse(localStorage.getItem('projectsList'));
         projectList = projectsFromStorage;
     };
 
