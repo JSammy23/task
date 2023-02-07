@@ -135,13 +135,28 @@ const dom = (() => {
     };
     };
 
+    function selectLink(target, index, action) {
+        const allLinks = document.querySelectorAll('.link');
+        const allProjectlinks = document.querySelectorAll('.project-link');
+        const menuTitle = target.getAttribute('data-title');
+
+        allLinks.forEach((link) => {
+            link.classList.remove('selected-link');
+        });
+
+        if (target.classList.contains('link')) {
+            target.classList.add('selected-link');
+        };
+    }
+
 
 
 
 
 
     return {
-        showProjects
+        showProjects,
+        selectLink
     }
 
 
