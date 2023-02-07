@@ -14,7 +14,8 @@ const handlers = (() => {
             // Style selected link
             if (target.classList.contains('select')) {
                 dom.selectLink(target, linkIndex)
-            }
+                dom.changeMainTitle(target, linkIndex)
+            };
 
         });
 
