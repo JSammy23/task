@@ -126,7 +126,7 @@ const dom = (() => {
             taskCount.textContent = taskNumber;
 
 
-            taskDiv.classList.add('task-div', 'hover-element');
+            taskDiv.classList.add('task-div', 'hover');
             taskDiv.setAttribute('data-project-index', i);
             taskDiv.setAttribute('data-task-index', j);
 
@@ -137,7 +137,8 @@ const dom = (() => {
                 'fa-xl',
                 'task-icon',
                 'toggle-complete',
-                'padding-right'
+                'padding-right',
+                'hover'
             );
 
             taskTitle.classList.add('task-text');
@@ -151,9 +152,15 @@ const dom = (() => {
             taskNote.textContent = projects.projectList[i].tasks[j].note;
             taskNote.classList.add('task-note')
 
+            // Task Info Div
+            taskInfo.classList.add('task-info-div');
+
             // Task Date
             if (projects.projectList[i].tasks[j].dueDate !== undefined) {
-                taskDate.textContent = projects.projectList[i].tasks[j].dueDate;
+                const date = projects.projectList[i].tasks[j].dueDate
+                const parsedDate = parseISO(date)
+                const formattedDate = format((parsedDate), 'E MMM do')
+                taskDate.textContent = formattedDate;
             } else {
                 taskDate.textContent = '';
             }
@@ -198,7 +205,12 @@ const dom = (() => {
         if (target.classList.contains('project')) {
             getTasks('project', index)
         }
-    }
+
+        if (target.classList.contains('menu-link') ||
+        target.classList.contains('menu-link-text')) {
+            getTasks(menuTitle);
+        }
+    };
 
     function showMainTitle(index) {
         const menuTexts = document.querySelectorAll('.menu-link-text')
@@ -224,6 +236,23 @@ const dom = (() => {
             mainTitleText.textContent = projects.projectList[index].title;
         }
     };
+
+    function grabModal(action, projectIndex, taskIndex) {
+        // TODO
+        const modalHeader = document.querySelector('.modal-header');
+        const modalTitle = document.querySelector('.modal-main-title');
+        const addProjectCard = document.querySelector('.add-project');
+        const projectTitleInput = document.getElementById('project-title');
+        const addTaskCard =document.querySelector('.add-task');
+        const cancelBtn = document.querySelector('.cancel-modal');
+        const confirmBtn = document.querySelector('.modal-confirm');
+
+        if (action === 'addProject') {
+            modal.classList.replace('hide', 'show')
+            addProjectCard.classList.replace('hide', 'show')
+            confirmBtn.textContent = 'Add Project';
+        }
+    }
 
 
 
