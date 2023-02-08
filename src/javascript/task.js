@@ -40,9 +40,24 @@ const tasks = (() => {
     }
 
     //TODO function toggleTaskCompletion
+    function markTaskComplete(projectIndex, taskIndex, selectedLink) {
+        let clickedLink;
+
+        if (projects.projectList[projectIndex].tasks[taskIndex].completed === false) {
+            projects.projectList[projectIndex].tasks[taskIndex].completed = true;
+        } else {
+            projects.projectList[projectIndex].tasks[taskIndex].completed = false;
+        }
+        dom.getTasks(clickedLink, projectIndex);
+    };
 
 
-
+    return {
+        addTask,
+        editTask,
+        deleteTask,
+        markTaskComplete
+    }
 
 
 })()
