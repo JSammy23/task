@@ -67,7 +67,7 @@ const dom = (() => {
         let projectIndexEnd;
     
         
-        localStorage.setItem('projects', JSON.stringify(projects.projectList));
+        // localStorage.setItem('projects', JSON.stringify(projects.projectList));
     
         // IF CLICKED ON PROJECT LINK
         if (menuTitle === 'project') {
@@ -97,8 +97,10 @@ const dom = (() => {
         for (let i = projectIndexStart; i < projectIndexEnd; i += 1) {
           for (let j = 0; j < projects.projectList[i].tasks.length; j += 1) {
             const taskDiv = document.createElement('div');
+            const circleIcon = document.createElement('i')
             const taskTextDiv = document.createElement('div');
-            const taskText = document.createElement('p');
+            const taskTitle = document.createElement('h3');
+            const taskNote = document.createElement('p');
             const taskInfo = document.createElement('div');
             const taskDate = document.createElement('p');
             const taskInfoIcon = document.createElement('i');
@@ -123,34 +125,52 @@ const dom = (() => {
             taskNumber += 1;
             taskCount.textContent = taskNumber;
 
+
             taskDiv.classList.add('task-div', 'hover-element');
-            // taskTextDiv.classList.add('flex');
             taskDiv.setAttribute('data-project-index', i);
             taskDiv.setAttribute('data-task-index', j);
 
-            taskText.classList.add('task-text');
-            taskText.textContent = projects.projectList[i].tasks[j].title;
-            taskText.setAttribute('data-project-index', i);
-            taskText.setAttribute('data-task-index', j);
+            // Circle checkmark
+            circleIcon.classList.add(
+                'fa-regular',
+                'fa-circle',
+                'fa-xl',
+                'task-icon',
+                'toggle-complete',
+                'padding-right'
+            );
+
+            taskTitle.classList.add('task-text');
+            taskTitle.textContent = projects.projectList[i].tasks[j].title;
+            taskTitle.setAttribute('data-project-index', i);
+            taskTitle.setAttribute('data-task-index', j);
+
+            taskTextDiv.classList.add('task-text-div', 'padding-right')
+
+            // Task Note
+            taskNote.textContent = projects.projectList[i].tasks[j].note;
+            taskNote.classList.add('task-note')
 
             // Task Date
-            if (projects.projectList[i].tasks[j].date !== undefined) {
-                taskDate.textContent = projects.projectList[i].tasks[j].date;
+            if (projects.projectList[i].tasks[j].dueDate !== undefined) {
+                taskDate.textContent = projects.projectList[i].tasks[j].dueDate;
             } else {
                 taskDate.textContent = '';
             }
 
-            taskTextDiv.appendChild(taskText);
+            taskTextDiv.appendChild(taskTitle);
+            taskTextDiv.appendChild(taskNote);
             taskInfo.appendChild(taskDate);
+            taskDiv.appendChild(circleIcon);
             taskDiv.appendChild(taskTextDiv);
             taskDiv.appendChild(taskInfo);
             taskList.appendChild(taskDiv);
                 
             // Task Completion
             if (projects.projectList[i].tasks[j].completed === false) {
-                taskText.classList.remove('task-done');
+                taskTitle.classList.remove('task-done');
             } else {
-                taskText.classList.add('task-done')
+                taskTitle.classList.add('task-done')
             };
 
             
