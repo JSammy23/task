@@ -41,6 +41,7 @@
             <div class="projects-nav">
                 <div class="projects-nav-title">
                 <p>Projects (<span class="project-count"></span>)</p>
+                <i class="fa-solid fa-circle-plus add-new-project"></i>
                 </div>
                 <div class="project-links-div">
                 <!-- Projects listed here -->
@@ -80,12 +81,70 @@
         </main>
 
         <!-- Modal -->
-        <div id="modal">
+        <div id="modal" class="hide">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h2 class="modal-main-title"></h2>
+                    <h2 class="modal-main-title">New Project</h2>
+                    <i class="fa-regular fa-circle-xmark close close-modal fa-xl"></i>
                 </div>
-                <div class="modal-content"></div>
+                <div class="modal-content">
+                    <form id="inputForm" name="inputForm">
+                        <!-- New Project -->
+                        <div class="add-project hide">
+                            <label for="project-title">Title: </label>
+                            <input 
+                            type="text"
+                            id="project-title"
+                            name="project-title"
+                            placeholder="Project Title"
+                            required>
+                        </div>
+
+                        <!-- New Task -->
+                        <div class="add-task show">
+                            <div class="form-legend">
+                                <label for="taskName">Title: </label>
+                                <input
+                                type="text"
+                                id="taskName"
+                                name="taskName"
+                                placeholder="What needs to be done"
+                                required>
+                            </div>
+                            <div class="form-legend">
+                                <label for="note">Note: </label>
+                                <input
+                                type="text"
+                                id="note"
+                                name="note"
+                                placeholder="Add a note">
+                            </div>
+                            <div class="form-legend">
+                                <label for="dueDate">DueDate: </label>
+                                <input 
+                                type="date"
+                                id="dueDate"
+                                name="dueDate">
+                            </div>
+                            <div class="form-legend">
+                                <label for="priority">Priority: </label>
+                                <select name="priority" id="priority">
+                                    <option value="low">Low</option>
+                                    <option value="normal" selected>Normal</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                    <div class="modal-buttons">
+                        <button type="button" class="cancel-modal close">Cancel</button>
+                        <button type="button" class="modal-confirm">Confirm</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
