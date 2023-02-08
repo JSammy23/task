@@ -23,7 +23,7 @@ const tasks = (() => {
     }
 
     function editTask(taskDetails) {
-        projects.projectList[projectIndex].tasks[taskIndex].title = taskDetails.title;
+        projects.projectList[projectIndex].tasks[taskIndex].title = taskDetails.taskName;
         projects.projectList[projectIndex].tasks[taskIndex].note = taskDetails.note;
         projects.projectList[projectIndex].tasks[taskIndex].dueDate = taskDetails.dueDate;
         projects.projectList[projectIndex].tasks[taskIndex].priority = taskDetails.priority;
