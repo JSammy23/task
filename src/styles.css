@@ -261,7 +261,12 @@ a {
   transform: scale(1.1);
 }
 
-input {
+.close-modal {
+  cursor: pointer;
+}
+
+input,
+select {
   font-size: 1.25rem;
 }
 
@@ -270,3 +275,11 @@ input[type=text] {
   border: none;
 
 }
+
+
+
+.form-legend {
+  margin-bottom: 1.5rem;
+}
+
+
