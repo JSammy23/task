@@ -1,3 +1,4 @@
+import dom from "./dom";
 import projects from "./projects";
 
 const tasks = (() => {
@@ -7,32 +8,34 @@ const tasks = (() => {
         let dueDate = taskDetails.dueDate;
         let completed = false;
         let priority = taskDetails.priority;
-        let project;
-        let taskIndex
+        let projectIndex = taskDetails.projectIndex;
+        let taskIndex = taskDetails.taskIndex
     };
 
     function addTask(taskDetails) {
         const task = Task(taskDetails)
 
         // TODO: Push task into correct project
-        const project = projects.projectMap.get(`${taskDetails.project}`)
-        project.tasks.push(task)
+        projects.projectList[projectIndex].tasks.push(task)
+        dom.getTasks('project', projectIndex) // TESTING
 
         // Refresh tasks in project array for DOM display
     }
 
     function editTask(taskDetails) {
-        const project = projects.projectMap.get(`${taskDetails.project}`)
-        project.tasks[taskIndex].title = taskDetails.title;
-        project.tasks[taskIndex].note = taskDetails.note;
-        project.tasks[taskIndex].dueDate = taskDetails.dueDate;
-        project.tasks[taskIndex].priority = taskDetails.priority;
+        projects.projectList[projectIndex].tasks[taskIndex].title = taskDetails.title;
+        projects.projectList[projectIndex].tasks[taskIndex].note = taskDetails.note;
+        projects.projectList[projectIndex].tasks[taskIndex].dueDate = taskDetails.dueDate;
+        projects.projectList[projectIndex].tasks[taskIndex].priority = taskDetails.priority;
         // Refresh tasks for DOM display
     }
 
     function deleteTask(taskDetails) {
-        const project = projects.projectMap.get(`${taskDetails.project}`);
-        project.tasks.splice(taskDetails.taskIndex, 1)
+        if (projectIndex > -1) {
+            projects.projectList[projectIndex].tasks.splice(taskIndex, 1);
+            dom.getTasks('all'); // TESTING
+        }
+        
         // Refresh tasks for DOM display
     }
 
