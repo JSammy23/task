@@ -40,7 +40,7 @@ const tasks = (() => {
     }
 
     //TODO function toggleTaskCompletion
-    function markTaskComplete(projectIndex, taskIndex, selectedLink) {
+    function toggleTaskComplete(projectIndex, taskIndex, selectedLink) {
         let clickedLink;
 
         if (projects.projectList[projectIndex].tasks[taskIndex].completed === false) {
@@ -56,7 +56,7 @@ const tasks = (() => {
         addTask,
         editTask,
         deleteTask,
-        markTaskComplete
+        toggleTaskComplete
     }
 
 
