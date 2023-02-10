@@ -183,6 +183,17 @@ a {
   padding-left: 40px;
 }
 
+.tasks-title {
+  display: flex;
+  justify-content: space-between;
+  min-width: 400px
+}
+
+.add-task {
+  float: right;
+  
+}
+
 
 .tasks-title-div {
   display: flex;
@@ -206,6 +217,7 @@ a {
   z-index: 2;
   font-size: 1.5rem;
 }
+
 .modal-card {
   position: relative;
   margin: 15% auto;
@@ -245,12 +257,17 @@ a {
 .modal-buttons > button {
   border: none;
   outline: none;
-  width: 30%;
-  height: 25%;
+  width: 40%;
+  height: 30%%;
   font-size: 1.25rem;
   cursor: pointer;
   margin-top: 10px;
+  padding: 8px;
 }
+
+span > i {
+  pointer-events: all;
+} 
 
 .modal-confirm {
   background-color: var(--light-aqua);
@@ -263,9 +280,7 @@ a {
   transform: scale(1.1);
 }
 
-.add-new-project {
-  padding: 5px;
-}
+
 
 .close-modal,
 .add-new-project {
