@@ -31,7 +31,7 @@ const dom = (() => {
             projectLink.setAttribute('data-link-index', i);
 
             projectText.classList.add('project-text', 'project', 'select');
-            projectText.textContent = projects.projectList[i].title;
+            projectText.textContent = projects.projectList[i].projectName;
             projectText.setAttribute('data-link-index', i);
 
             projectEditIcon.classList.add(
@@ -241,16 +241,38 @@ const dom = (() => {
         // TODO
         const modalHeader = document.querySelector('.modal-header');
         const modalTitle = document.querySelector('.modal-main-title');
-        const addProjectCard = document.querySelector('.add-project');
+        const addProjectCard = document.querySelector('.projectModal');
         const projectTitleInput = document.getElementById('project-title');
         const addTaskCard =document.querySelector('.add-task');
         const cancelBtn = document.querySelector('.cancel-modal');
         const confirmBtn = document.querySelector('.modal-confirm');
+        const addProjectBtn = document.querySelector('.addProject');
+        const addTaskBtn = document.querySelector('addTaskConfirm');
+        const projectForm = document.getElementById('projectForm');
+        const taskForm = document.getElementById('taskForm');
 
         if (action === 'addProject') {
+            projectForm.reset()
+            modalTitle.textContent = 'New Project'
             modal.classList.replace('hide', 'show')
             addProjectCard.classList.replace('hide', 'show')
-            confirmBtn.textContent = 'Add Project';
+            addProjectBtn.classList.toggle('hide')
+            addProjectBtn.classList.toggle('show')
+        }
+
+        if (action === 'addTask') {
+            // TODO: Take in projectIndex for task
+            taskForm.reset()
+            modalTitle.textContent = 'New Task'
+            modal.classList.replace('hide', 'show')
+            addTaskCard.classList.replace('hide', 'show')
+            addTaskBtn.classList.replace('hide', 'show')
+        }
+
+        if (action === 'closeModal') {
+            modal.classList.replace('show', 'hide')
+            projectForm.reset()
+            taskForm.reset()
         }
     }
 
@@ -265,7 +287,8 @@ const dom = (() => {
         getTasks,
         showTasks,
         changeMainTitle,
-        showMainTitle
+        showMainTitle,
+        grabModal
     }
 
 

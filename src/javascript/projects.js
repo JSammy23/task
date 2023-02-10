@@ -1,12 +1,12 @@
-
+import dom from "./dom";
 
 const projects = (() => {
-    const projectList = [];
+    let projectList = [];
 
     // Check local storage and efault project
     if (localStorage.getItem('projectList') === null) {
         projectList.push({
-            title: 'My Project',
+            projectName: 'My Project',
             tasks: [
                 {
                     title: 'Mow the yard',
@@ -20,7 +20,7 @@ const projects = (() => {
             ]
         });
         projectList.push({
-            title: 'Work',
+            projectName: 'Work',
             tasks: [
                 {
                     title: 'Get that report to Johnsons desk',
@@ -38,21 +38,25 @@ const projects = (() => {
         projectList = projectsFromStorage;
     };
 
-    localStorage.projectList = JSON.stringify(projectList);
-
-    console.log(projectList)
+    
 
     
 
-    const Project = title => {
-        this.title = title
+    const Project = (title) => {
+        let projectName = title
         const tasks = []
+
+        return {
+            projectName,
+            tasks
+        }
     }
 
     function addProject(title) {
         const project = Project(title)
         projectList.push(project)
-        //Display projects
+        console.log('Added')
+        dom.showProjects()
     }
 
     function editProject() {

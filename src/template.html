@@ -41,7 +41,11 @@
             <div class="projects-nav">
                 <div class="projects-nav-title">
                 <p>Projects (<span class="project-count"></span>)</p>
-                <i class="fa-solid fa-circle-plus add-new-project"></i>
+                <span class="add-new-project">
+                    <i class="fa-solid fa-circle-plus fa-xl add-new-project" title="Add New Project" aria-hidden="true">
+                    
+                    </i>
+                </span>
                 </div>
                 <div class="project-links-div">
                 <!-- Projects listed here -->
@@ -68,6 +72,7 @@
                 <div class="tasks-title-div">
                     <div class="tasks-title">
                         <p>Tasks (<span class="task-count"></span>)</p>
+                        <i id="addTask" class="fa-solid fa-circle-plus" title="Add New Task"></i>
                     </div>
                 </div>
 
@@ -88,20 +93,23 @@
                     <i class="fa-regular fa-circle-xmark close close-modal fa-xl"></i>
                 </div>
                 <div class="modal-content">
-                    <form id="inputForm" name="inputForm">
+                    <form action="#"  id="projectForm">
                         <!-- New Project -->
-                        <div class="add-project hide">
-                            <label for="project-title">Title: </label>
-                            <input 
-                            type="text"
-                            id="project-title"
-                            name="project-title"
-                            placeholder="Project Title"
-                            required>
+                        <div class="projectModal hide">
+                            <div class="form-legend">
+                                <label for="project-title">Title: </label>
+                                <input
+                                type="text"
+                                id="project-title"
+                                name="project-title"
+                                placeholder="Project Title"
+                                required>
+                            </div>
                         </div>
-
+                    </form> 
+                    <form id="taskForm" method="dialog" name="taskForm">
                         <!-- New Task -->
-                        <div class="add-task show">
+                        <div class="add-task hide">
                             <div class="form-legend">
                                 <label for="taskName">Title: </label>
                                 <input
@@ -142,7 +150,9 @@
                     </form>
                     <div class="modal-buttons">
                         <button type="button" class="cancel-modal close">Cancel</button>
-                        <button type="button" class="modal-confirm">Confirm</button>
+                        <button type="button" id="modalConfirm" class="modal-confirm hide"></button>
+                        <button type="submit"  form="projectForm" class="modal-confirm hide addProject">Add Project</button>
+                        <button type="submit" id="addTaskConfirm" class="modal-confirm hide" >Add Task</button>
                     </div>
                 </div>
             </div>

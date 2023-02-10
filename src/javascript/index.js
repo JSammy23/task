@@ -10,3 +10,4 @@ import handlers from './handlers';
 dom.showProjects()
 
 handlers.listenForClicks()
+handlers.handleProjectForm()

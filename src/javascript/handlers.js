@@ -1,6 +1,8 @@
 import dom from "./dom";
+import projects from "./projects";
 
 const handlers = (() => {
+    const modal = document.getElementById('modal');
     function listenForClicks() {
         let projectIndex;
         let taskIndex;
@@ -17,16 +19,48 @@ const handlers = (() => {
                 dom.changeMainTitle(target, linkIndex)
             };
 
+            // Add Project
+            if (target.classList.contains('add-new-project')) {
+                dom.grabModal('addProject')
+                
+            };
+
+            // Add Task 
+            if (target.id === 'addTask') {
+                dom.grabModal('addTask')
+            }
+
+            // Close Modal
+            if (target.classList.contains('close-modal')) {
+                dom.grabModal('closeModal')
+            };
+
         });
+
 
     };
 
+    function handleProjectForm() {
+        const projectForm = document.getElementById('projectForm')
+        projectForm.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const projectTitle = document.getElementById('project-title');
+            console.log(projectTitle.value)
+            projects.addProject(projectTitle.value)
+            console.log(projects.projectList)
+            dom.grabModal('closeModal')
+        })
+    }
 
+    function handleTaskForm() {
+        //TODO
+    }
 
 
 
     return {
-        listenForClicks
+        listenForClicks,
+        handleProjectForm
     }
 
 })();
