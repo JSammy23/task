@@ -11,3 +11,4 @@ dom.showProjects()
 
 handlers.listenForClicks()
 handlers.handleProjectForm()
+handlers.handleTaskForm()
