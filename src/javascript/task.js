@@ -10,19 +10,30 @@ const tasks = (() => {
         let priority = taskDetails.priority;
         let projectIndex = taskDetails.projectIndex;
         let taskIndex = taskDetails.taskIndex
+
+        return {
+            taskName,
+            note,
+            dueDate,
+            completed,
+            priority,
+            projectIndex,
+            taskIndex
+        }
     };
 
-    function addTask(taskDetails) {
+
+    function addTask(taskDetails, projectIndex) {
         const task = Task(taskDetails)
 
-        // TODO: Push task into correct project
         projects.projectList[projectIndex].tasks.push(task)
-        dom.getTasks('project', projectIndex) // TESTING
+        console.log('Task Added', projects.projectList[projectIndex])
+        dom.getTasks('project', projectIndex)
 
         // Refresh tasks in project array for DOM display
     }
 
-    function editTask(taskDetails) {
+    function editTask(taskDetails, projectIndex) {
         projects.projectList[projectIndex].tasks[taskIndex].title = taskDetails.taskName;
         projects.projectList[projectIndex].tasks[taskIndex].note = taskDetails.note;
         projects.projectList[projectIndex].tasks[taskIndex].dueDate = taskDetails.dueDate;
@@ -30,7 +41,7 @@ const tasks = (() => {
         // Refresh tasks for DOM display
     }
 
-    function deleteTask(taskDetails) {
+    function deleteTask(taskDetails, projectIndex) {
         if (projectIndex > -1) {
             projects.projectList[projectIndex].tasks.splice(taskIndex, 1);
             dom.getTasks('all'); // TESTING

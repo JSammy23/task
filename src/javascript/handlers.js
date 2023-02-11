@@ -1,5 +1,6 @@
 import dom from "./dom";
 import projects from "./projects";
+import tasks from "./task";
 
 const handlers = (() => {
     const modal = document.getElementById('modal');
@@ -19,6 +20,12 @@ const handlers = (() => {
                 dom.changeMainTitle(target, linkIndex)
             };
 
+            // AddTaskBtn
+            if (target.classList.contains('project')) {
+                // Not working properly
+                dom.selectLink(target, projectIndex)
+            }
+
             // Add Project
             if (target.classList.contains('add-new-project')) {
                 dom.grabModal('addProject')
@@ -28,6 +35,7 @@ const handlers = (() => {
             // Add Task 
             if (target.id === 'addTask') {
                 dom.grabModal('addTask')
+
             }
 
             // Close Modal
@@ -54,13 +62,25 @@ const handlers = (() => {
 
     function handleTaskForm() {
         //TODO
+        const taskForm = document.getElementById('taskForm');
+        taskForm.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const formData = new FormData(taskForm)
+            const taskData = Object.fromEntries(formData)
+            const selectedProject = document.querySelector('.selected-link' || '.project')
+            const projectIndex = selectedProject.dataset.linkIndex
+            // console.log(taskData, projectIndex)
+            tasks.addTask(taskData, projectIndex)
+            dom.grabModal('closeModal')
+        })
     }
 
 
 
     return {
         listenForClicks,
-        handleProjectForm
+        handleProjectForm,
+        handleTaskForm
     }
 
 })();
