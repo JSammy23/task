@@ -9,7 +9,7 @@ const projects = (() => {
             projectName: 'My Project',
             tasks: [
                 {
-                    title: 'Mow the yard',
+                    taskName: 'Mow the yard',
                     note: 'Rain forcasted Thursday morning',
                     dueDate: '2023-02-10',
                     priority: 'normal',
@@ -23,7 +23,7 @@ const projects = (() => {
             projectName: 'Work',
             tasks: [
                 {
-                    title: 'Get that report to Johnsons desk',
+                    taskName: 'Get that report to Johnsons desk',
                     note: 'Q3 expense report',
                     dueDate: '2023-02-20',
                     priority: 'high',
