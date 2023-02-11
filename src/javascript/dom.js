@@ -9,6 +9,7 @@ const dom = (() => {
     const projectCount = document.querySelector('.project-count')
     const taskList = document.querySelector('.task-list')
     const taskCount = document.querySelector('.task-count')
+    
 
     function showProjects() {
         projectCount.textContent = projects.projectList.length
@@ -142,7 +143,7 @@ const dom = (() => {
             );
 
             taskTitle.classList.add('task-text');
-            taskTitle.textContent = projects.projectList[i].tasks[j].title;
+            taskTitle.textContent = projects.projectList[i].tasks[j].taskName;
             taskTitle.setAttribute('data-project-index', i);
             taskTitle.setAttribute('data-task-index', j);
 
@@ -192,6 +193,8 @@ const dom = (() => {
         const allLinks = document.querySelectorAll('.link');
         const allProjectlinks = document.querySelectorAll('.project-link');
         const menuTitle = target.getAttribute('data-title');
+        const taskTitleHeader = document.querySelector('.tasks-title')
+        const addTaskIcon = document.getElementById('addTask')
 
         allLinks.forEach((link) => {
             link.classList.remove('selected-link');
@@ -204,11 +207,15 @@ const dom = (() => {
         // Project Link
         if (target.classList.contains('project')) {
             getTasks('project', index)
+            addTaskIcon.classList.replace('hide', 'show')
+            console.log('If statement fired.')
+
         }
 
         if (target.classList.contains('menu-link') ||
         target.classList.contains('menu-link-text')) {
             getTasks(menuTitle);
+            addTaskIcon.classList.replace('show', 'hide')
         }
     };
 
@@ -247,7 +254,7 @@ const dom = (() => {
         const cancelBtn = document.querySelector('.cancel-modal');
         const confirmBtn = document.querySelector('.modal-confirm');
         const addProjectBtn = document.querySelector('.addProject');
-        const addTaskBtn = document.querySelector('addTaskConfirm');
+        const addTaskBtn = document.getElementById('addTaskConfirm');
         const projectForm = document.getElementById('projectForm');
         const taskForm = document.getElementById('taskForm');
 
