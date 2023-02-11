@@ -189,9 +189,8 @@ a {
   min-width: 400px
 }
 
-.add-task {
-  float: right;
-  
+#addTask {
+  cursor: pointer;
 }
 
 

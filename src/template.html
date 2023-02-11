@@ -72,7 +72,8 @@
                 <div class="tasks-title-div">
                     <div class="tasks-title">
                         <p>Tasks (<span class="task-count"></span>)</p>
-                        <i id="addTask" class="fa-solid fa-circle-plus" title="Add New Task"></i>
+                        <!-- addTask btn needs to only be visible after selecting project link -->
+                        <i id="addTask" class="fa-solid fa-circle-plus hide" title="Add New Task"></i>
                     </div>
                 </div>
 
@@ -152,7 +153,7 @@
                         <button type="button" class="cancel-modal close">Cancel</button>
                         <button type="button" id="modalConfirm" class="modal-confirm hide"></button>
                         <button type="submit"  form="projectForm" class="modal-confirm hide addProject">Add Project</button>
-                        <button type="submit" id="addTaskConfirm" class="modal-confirm hide" >Add Task</button>
+                        <button type="submit" id="addTaskConfirm" form="taskForm" class="modal-confirm hide" >Add Task</button>
                     </div>
                 </div>
             </div>
