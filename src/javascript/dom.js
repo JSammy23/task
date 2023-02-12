@@ -105,7 +105,7 @@ const dom = (() => {
         for (let i = projectIndexStart; i < projectIndexEnd; i += 1) {
           for (let j = 0; j < projects.projectList[i].tasks.length; j += 1) {
             const taskDiv = document.createElement('div');
-            const circleIcon = document.createElement('i')
+            const circleIcon = document.createElement('div')
             const taskTextDiv = document.createElement('div');
             const taskTitle = document.createElement('h3');
             const taskNote = document.createElement('p');
@@ -140,12 +140,9 @@ const dom = (() => {
 
             // Circle checkmark
             circleIcon.classList.add(
-                'fa-regular',
-                'fa-circle',
-                'fa-xl',
+                'circle',
                 'task-icon',
                 'toggle-complete',
-                'padding-right',
                 'hover'
             );
 
@@ -184,12 +181,10 @@ const dom = (() => {
             // Task Completion
             if (projects.projectList[i].tasks[j].completed === false) {
                 taskTitle.classList.remove('task-done');
-                circleIcon.classList.replace('fa-solid', 'fa-regular')
-                circleIcon.classList.replace('fa-circle-check', 'fa-circle')
+                circleIcon.classList.remove('complete')
             } else {
                 taskTitle.classList.add('task-done')
-                circleIcon.classList.replace('fa-regular', 'fa-solid')
-                circleIcon.classList.replace('fa-circle', 'fa-circle-check')
+                circleIcon.classList.add('complete')
             };
             
 
@@ -269,9 +264,18 @@ const dom = (() => {
         const addTaskBtn = document.getElementById('addTaskConfirm');
         const projectForm = document.getElementById('projectForm');
         const taskForm = document.getElementById('taskForm');
-
-        if (action === 'addProject') {
+        const saveEditProjectBtn = document.getElementById('saveEditProject')
+        function resetModal(){
             projectForm.reset()
+            taskForm.reset()
+            addProjectBtn.classList.replace('show', 'hide')
+            addTaskBtn.classList.replace('show', 'hide')
+            addProjectCard.classList.replace('show', 'hide')
+            addTaskCard.classList.replace('show', 'hide')
+        }
+
+        if (action === 'addProject' || action === 'editProject') {
+            resetModal()
             modalTitle.textContent = 'New Project'
             modal.classList.replace('hide', 'show')
             addProjectCard.classList.replace('hide', 'show')
@@ -279,9 +283,17 @@ const dom = (() => {
             addProjectBtn.classList.toggle('show')
         }
 
+        if (action === 'editProject') {
+            resetModal()
+            modalTitle.textContent = 'Edit Project'
+            addProjectCard.classList.replace('hide', 'show')
+            projectTitleInput.value = projects.projectList[projectIndex].projectName
+            saveEditProjectBtn.classList.toggle('hide')
+        }
+
         if (action === 'addTask') {
             // TODO: Take in projectIndex for task
-            taskForm.reset()
+            resetModal()
             modalTitle.textContent = 'New Task'
             modal.classList.replace('hide', 'show')
             addTaskCard.classList.replace('hide', 'show')
@@ -290,9 +302,10 @@ const dom = (() => {
 
         if (action === 'closeModal') {
             modal.classList.replace('show', 'hide')
-            projectForm.reset()
-            taskForm.reset()
+            resetModal()
         }
+
+    
     }
 
 
