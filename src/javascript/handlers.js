@@ -60,8 +60,24 @@ const handlers = (() => {
 
             // Edit Task
             if (target.id === 'editTaskBtn') {
-                console.log('Edit Task')
                 dom.grabModal('editTask', target.dataset.projectIndex, target.dataset.taskIndex)
+                
+
+            }
+            if (target.id === 'saveEditTask') {
+                const taskName = document.getElementById('taskName')
+                const note = document.getElementById('note')
+                const dueDate = document.getElementById('dueDate')
+                const priority = document.getElementById('priority')
+                tasks.editTask({
+                    taskName: taskName.value,
+                    note: note.value,
+                    dueDate: dueDate.value,
+                    priority: priority.value
+                }, target.dataset.projectIndex, target.dataset.taskIndex)
+                dom.grabModal('closeModal')
+                dom.getTasks('project', target.dataset.projectIndex)
+                // console.log(projects.projectList[target.dataset.projectIndex].tasks[target.dataset.taskIndex])
             }
 
             // Task Completetion

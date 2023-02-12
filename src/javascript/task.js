@@ -33,8 +33,8 @@ const tasks = (() => {
         // Refresh tasks in project array for DOM display
     }
 
-    function editTask(taskDetails, projectIndex) {
-        projects.projectList[projectIndex].tasks[taskIndex].title = taskDetails.taskName;
+    function editTask(taskDetails, projectIndex, taskIndex) {
+        projects.projectList[projectIndex].tasks[taskIndex].taskName = taskDetails.taskName;
         projects.projectList[projectIndex].tasks[taskIndex].note = taskDetails.note;
         projects.projectList[projectIndex].tasks[taskIndex].dueDate = taskDetails.dueDate;
         projects.projectList[projectIndex].tasks[taskIndex].priority = taskDetails.priority;

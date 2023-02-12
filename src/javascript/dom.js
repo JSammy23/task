@@ -218,6 +218,12 @@ const dom = (() => {
         if (target.classList.contains('link')) {
             target.classList.add('selected-link');
         };
+        if (target.classList.contains('menu-link-text')) {
+            target.parentElement.classList.add('selected-link')
+        }
+        if (target.classList.contains('project-text')) {
+            target.parentElement.parentElement.classList.add('selected-link')
+        }
 
         // Project Link
         if (target.classList.contains('project')) {
@@ -272,7 +278,8 @@ const dom = (() => {
         const addTaskBtn = document.getElementById('addTaskConfirm');
         const projectForm = document.getElementById('projectForm');
         const taskForm = document.getElementById('taskForm');
-        const saveEditProjectBtn = document.getElementById('saveEditProject')
+        const saveEditProjectBtn = document.getElementById('saveEditProject');
+        const saveEditTaskBtn = document.getElementById('saveEditTask');
         function resetModal(){
             projectForm.reset()
             taskForm.reset()
@@ -281,6 +288,7 @@ const dom = (() => {
             addProjectCard.classList.replace('show', 'hide')
             addTaskCard.classList.replace('show', 'hide')
             saveEditProjectBtn.classList.add('hide')
+            saveEditTaskBtn.classList.replace('show', 'hide')
         }
 
         if (action === 'addProject' || action === 'editProject') {
@@ -315,7 +323,9 @@ const dom = (() => {
             modalTitle.textContent = 'Edit Task'
             modal.classList.replace('hide', 'show')
             addTaskCard.classList.replace('hide', 'show')
-            addTaskBtn.classList.replace('hide', 'show')
+            saveEditTaskBtn.classList.replace('hide', 'show')
+            saveEditTaskBtn.dataset.taskIndex = taskIndex
+            saveEditTaskBtn.dataset.projectIndex = projectIndex
 
             const taskName = document.getElementById('taskName')
             const note = document.getElementById('note')
@@ -325,6 +335,7 @@ const dom = (() => {
             note.value = projects.projectList[projectIndex].tasks[taskIndex].note;
             dueDate.value = projects.projectList[projectIndex].tasks[taskIndex].dueDate;
             priority.value = projects.projectList[projectIndex].tasks[taskIndex].priority;
+
 
             // TODO: 
             // Swap out new button over addTask
