@@ -42,23 +42,26 @@ const handlers = (() => {
             // Edit Project
             if ( target.id === 'editProjectBtn') {
                 const projectIndex = target.parentElement.dataset.linkIndex
-                dom.grabModal('editProject', projectIndex)
-                var editIndex = projectIndex
-                console.log(editIndex)
+                dom.grabModal('editProject', projectIndex)   
             }
             // TODO: Get project index from first edit if statement to if statement below
-            // if (target.id === 'saveEditProject') {
-            //     const nameInput = document.getElementById('project-title');
-            //     // projects.editProject(nameInput.value, editIndex)
-            //     console.log(nameInput.value, editIndex)
-            //     dom.grabModal('closeModal')
-            //     dom.showProjects()
-            // }
+            if (target.id === 'saveEditProject') {
+                const nameInput = document.getElementById('project-title');
+                projects.editProject(nameInput.value, target.dataset.index)
+                dom.grabModal('closeModal')
+                dom.showProjects()
+            }
             
 
             // Add Task 
             if (target.id === 'addTask') {
                 dom.grabModal('addTask')
+            }
+
+            // Edit Task
+            if (target.id === 'editTaskBtn') {
+                console.log('Edit Task')
+                dom.grabModal('editTask', target.dataset.projectIndex, target.dataset.taskIndex)
             }
 
             // Task Completetion
