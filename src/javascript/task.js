@@ -50,7 +50,7 @@ const tasks = (() => {
         // Refresh tasks for DOM display
     }
 
-    //TODO function toggleTaskCompletion
+    
     function toggleTaskComplete(projectIndex, taskIndex, selectedLink) {
         let clickedLink;
 
