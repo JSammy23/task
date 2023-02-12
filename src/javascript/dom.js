@@ -53,9 +53,16 @@ const dom = (() => {
                 'delete-project',
                 'select'
             )
+            const deleteBtn = document.createElement('button')
+            const editBtn = document.createElement('button')
+            editBtn.id = 'editProjectBtn'
+            deleteBtn.id = 'deleteBtn'
+            deleteBtn.textContent = 'D'
+            editBtn.textContent = 'E'
+
             
-            projectIconDiv.appendChild(projectEditIcon)
-            projectIconDiv.appendChild(projectTrashIcon)
+            projectIconDiv.appendChild(editBtn)
+            projectIconDiv.appendChild(deleteBtn)
             projectTextDiv.appendChild(projectText)
             projectLink.appendChild(projectTextDiv)
             projectLink.appendChild(projectIconDiv)
@@ -76,9 +83,9 @@ const dom = (() => {
           projectIndexEnd = projectIndex + 1;
     
           
-          if (projects.projectList[projectIndex].tasks.length === 0) {
+        if (projects.projectList[projectIndex].tasks.length === 0) {
             taskCount.textContent = 0;
-          }
+        }
     
           // IF CLICKED ON MENU LINK
         } else {
@@ -177,9 +184,14 @@ const dom = (() => {
             // Task Completion
             if (projects.projectList[i].tasks[j].completed === false) {
                 taskTitle.classList.remove('task-done');
+                circleIcon.classList.replace('fa-solid', 'fa-regular')
+                circleIcon.classList.replace('fa-circle-check', 'fa-circle')
             } else {
                 taskTitle.classList.add('task-done')
+                circleIcon.classList.replace('fa-regular', 'fa-solid')
+                circleIcon.classList.replace('fa-circle', 'fa-circle-check')
             };
+            
 
             
 
@@ -240,7 +252,7 @@ const dom = (() => {
             target.classList.contains('delete-project') ||
             target.classList.contains('edit-project')
         ) {
-            mainTitleText.textContent = projects.projectList[index].title;
+            mainTitleText.textContent = projects.projectList[index].projectName;
         }
     };
 
