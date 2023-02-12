@@ -59,9 +59,9 @@ const projects = (() => {
         dom.showProjects()
     }
 
-    function editProject() {
-        // edit code here
-        //Display projects
+    function editProject(newName, projectIndex) {
+        projectList[projectIndex].projectName = newName;
+        dom.showProjects()
     }
 
     function deleteProject(index) {
@@ -75,7 +75,8 @@ const projects = (() => {
     return {
         projectList,
         addProject,
-        deleteProject
+        deleteProject,
+        editProject
     }
 })();
 
