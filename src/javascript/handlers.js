@@ -32,13 +32,29 @@ const handlers = (() => {
             // Add Project
             if (target.classList.contains('add-new-project')) {
                 dom.grabModal('addProject')
-                
             };
 
             // Delete Project
             if (target.id === 'deleteBtn') {
                 projects.deleteProject(target.parentElement.dataset.linkIndex) 
             }
+
+            // Edit Project
+            if ( target.id === 'editProjectBtn') {
+                const projectIndex = target.parentElement.dataset.linkIndex
+                dom.grabModal('editProject', projectIndex)
+                var editIndex = projectIndex
+                console.log(editIndex)
+            }
+            // TODO: Get project index from first edit if statement to if statement below
+            // if (target.id === 'saveEditProject') {
+            //     const nameInput = document.getElementById('project-title');
+            //     // projects.editProject(nameInput.value, editIndex)
+            //     console.log(nameInput.value, editIndex)
+            //     dom.grabModal('closeModal')
+            //     dom.showProjects()
+            // }
+            
 
             // Add Task 
             if (target.id === 'addTask') {

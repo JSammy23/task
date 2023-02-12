@@ -55,6 +55,7 @@ body {
 }
 .task-done {
   text-decoration: line-through;
+  font-weight: 400;
 }
 .padding-right {
   padding-right: 8px;
@@ -193,6 +194,17 @@ a {
   cursor: pointer;
 }
 
+.circle {
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--orca-dark);
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.complete {
+  background-color: var(--orca-green);
+}
 
 .tasks-title-div {
   display: flex;
