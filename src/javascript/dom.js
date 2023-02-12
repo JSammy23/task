@@ -170,9 +170,17 @@ const dom = (() => {
                 taskDate.textContent = '';
             }
 
+            // Edit Task
+            const editTaskBtn = document.createElement('button')
+            editTaskBtn.id = 'editTaskBtn'
+            editTaskBtn.textContent = "E"
+            editTaskBtn.dataset.taskIndex = j
+            editTaskBtn.dataset.projectIndex = i
+
             taskTextDiv.appendChild(taskTitle);
             taskTextDiv.appendChild(taskNote);
             taskInfo.appendChild(taskDate);
+            taskInfo.appendChild(editTaskBtn);
             taskDiv.appendChild(circleIcon);
             taskDiv.appendChild(taskTextDiv);
             taskDiv.appendChild(taskInfo);
@@ -272,6 +280,7 @@ const dom = (() => {
             addTaskBtn.classList.replace('show', 'hide')
             addProjectCard.classList.replace('show', 'hide')
             addTaskCard.classList.replace('show', 'hide')
+            saveEditProjectBtn.classList.add('hide')
         }
 
         if (action === 'addProject' || action === 'editProject') {
@@ -289,6 +298,7 @@ const dom = (() => {
             addProjectCard.classList.replace('hide', 'show')
             projectTitleInput.value = projects.projectList[projectIndex].projectName
             saveEditProjectBtn.classList.toggle('hide')
+            saveEditProjectBtn.dataset.index = projectIndex
         }
 
         if (action === 'addTask') {
@@ -298,6 +308,29 @@ const dom = (() => {
             modal.classList.replace('hide', 'show')
             addTaskCard.classList.replace('hide', 'show')
             addTaskBtn.classList.replace('hide', 'show')
+        }
+
+        if (action === 'editTask') {
+            resetModal()
+            modalTitle.textContent = 'Edit Task'
+            modal.classList.replace('hide', 'show')
+            addTaskCard.classList.replace('hide', 'show')
+            addTaskBtn.classList.replace('hide', 'show')
+
+            const taskName = document.getElementById('taskName')
+            const note = document.getElementById('note')
+            const dueDate = document.getElementById('dueDate')
+            const priority = document.getElementById('priority')
+            taskName.value = projects.projectList[projectIndex].tasks[taskIndex].taskName;
+            note.value = projects.projectList[projectIndex].tasks[taskIndex].note;
+            dueDate.value = projects.projectList[projectIndex].tasks[taskIndex].dueDate;
+            priority.value = projects.projectList[projectIndex].tasks[taskIndex].priority;
+
+            // TODO: 
+            // Swap out new button over addTask
+            // When new btn clicked save above propterties with new values
+            // refresh tasks
+
         }
 
         if (action === 'closeModal') {
