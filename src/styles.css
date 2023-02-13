@@ -56,6 +56,10 @@ body {
   background: linear-gradient(90deg, var(--main-accent) 0%, var(--dark-accent) 100%);
 }
 
+.light-logo {
+  color: var(--main-accent);
+}
+
 .light {
   color: white;
 }
@@ -69,7 +73,8 @@ body {
   margin-right: 25px;
 }
 
-.darkModeToggle > button {
+.darkModeToggle > button,
+ #addTask {
   background: none;
   border: none;
   outline: none;
@@ -77,7 +82,8 @@ body {
   font-size: 1rem;
 }
 
-#toggleDarkMode > svg {
+#toggleDarkMode > svg,
+#addTask > svg {
   pointer-events: none;
 }
 
@@ -235,6 +241,7 @@ a {
   min-width: 400px
 }
 
+
 #addTask {
   cursor: pointer;
 }
@@ -323,7 +330,7 @@ a {
 
 
 .modal-confirm {
-  background-color: var(--light-aqua);
+  background-color: var(--main-accent);
   color: var(--main-bg);
 }
 

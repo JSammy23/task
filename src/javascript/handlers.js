@@ -23,11 +23,11 @@ const handlers = (() => {
                 const root = document.querySelector(':root')
                 if (darkModeToggle.classList.contains('fa-toggle-off')) {
                     darkModeToggle.classList.replace('fa-toggle-off', 'fa-toggle-on')
-                    darkModeToggle.classList.add('light')
+                    darkModeToggle.classList.add('light-logo')
                     logo.classList.replace('light', 'dark')
                 } else if (darkModeToggle.classList.contains('fa-toggle-on')) {
                     darkModeToggle.classList.replace('fa-toggle-on', 'fa-toggle-off')
-                    darkModeToggle.classList.remove('light')
+                    darkModeToggle.classList.remove('light-logo')
                     logo.classList.replace('dark', 'light')
                 }
                 // Toggle Dark Mode

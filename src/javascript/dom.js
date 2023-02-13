@@ -209,7 +209,7 @@ const dom = (() => {
         const allProjectlinks = document.querySelectorAll('.project-link');
         const menuTitle = target.getAttribute('data-title');
         const taskTitleHeader = document.querySelector('.tasks-title')
-        const addTaskIcon = document.getElementById('addTask')
+        const addTaskIcon = document.querySelector('.addTask')
 
         allLinks.forEach((link) => {
             link.classList.remove('selected-link');
