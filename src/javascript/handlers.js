@@ -15,7 +15,26 @@ const handlers = (() => {
             const selectedLink = document.querySelector('.selected-link');
             const linkIndex = parseInt(target.getAttribute('data-link-index'), 10);
 
-    
+            // Toggle Dark Mode
+            if (target.id === 'toggleDarkMode') {
+                const darkModeToggle = document.getElementById('darkModeToggle')
+                const header = document.getElementById('header')
+                const logo = document.querySelector('.logo')
+                const root = document.querySelector(':root')
+                if (darkModeToggle.classList.contains('fa-toggle-off')) {
+                    darkModeToggle.classList.replace('fa-toggle-off', 'fa-toggle-on')
+                    darkModeToggle.classList.add('light')
+                    logo.classList.replace('light', 'dark')
+                } else if (darkModeToggle.classList.contains('fa-toggle-on')) {
+                    darkModeToggle.classList.replace('fa-toggle-on', 'fa-toggle-off')
+                    darkModeToggle.classList.remove('light')
+                    logo.classList.replace('dark', 'light')
+                }
+                // Toggle Dark Mode
+                header.classList.toggle('dark-mode')
+                header.classList.toggle('light-mode')
+                root.classList.toggle('dark-mode')
+            }
 
             // Style selected link
             if (target.classList.contains('select')) {

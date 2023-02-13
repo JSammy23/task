@@ -1,20 +1,28 @@
 *, *::before, *::after {
   margin: 0;
   padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
   --dark-grey: #757575;
   --light-grey: #F7F7F7;
-  --white: #FFFFFF;
+  --main-bg: #FFFFFF;
   --grey: #E6E6E6;
-  --aqua: #00B3BB;
+  --highlight: #00B3BB;
   --light-aqua: #00E6AA;
   --dark-aqua: #0E9AA1;
-  --orca-green: #44A08D;
-  --orca-dark: #093637;
+  --main-accent: #44A08D;
+  --dark-accent: #093637;
 }
+
+:root.dark-mode {
+  --main-bg: #000000;
+  --main-accent: #0f9b0f;
+  --light-grey: #093637;
+  --dark-accent: #093637;
+  --highlight: #00B3BB;
+} 
 
 body {
   width: 100%;
@@ -36,14 +44,46 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, var(--orca-green) 0%, var(--orca-dark) 100%);
+  
   font-family: 'Lato', sans-serif;
+}
+
+.dark-mode {
+  background: linear-gradient(90deg,  #0f9b0f, #000000);
+}
+
+.light-mode {
+  background: linear-gradient(90deg, var(--main-accent) 0%, var(--dark-accent) 100%);
+}
+
+.light {
+  color: white;
+}
+
+.dark {
+  color: #03001e;
+}
+
+.darkModeToggle {
+  margin-left: auto;
+  margin-right: 25px;
+}
+
+.darkModeToggle > button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#toggleDarkMode > svg {
+  pointer-events: none;
 }
 
 .logo {
   padding: 20px 40px;
   font-size: 25px;
-  color: var(--white);
 }
 
 /* General Styles */
@@ -87,7 +127,7 @@ body {
   display: flex;
   margin-bottom: 15px;
   padding: 12px 20px;
-  background-color: var(--white);
+  background-color: var(--main-bg);
   font-size: 17px;
   color: var(--dark-grey);
   text-decoration: none;
@@ -101,15 +141,15 @@ body {
   padding-left: 3px;
 }
 .selected-link {
-  background-color: var(--orca-green);
-  color: var(--white);
+  background-color: var(--main-accent);
+  color: var(--main-bg);
 }
 .selected-link:hover {
   background-color: var(--dark-aqua);
 }
 .link:not(.selected-link):hover,
 .project-link:not(.selected-link):hover {
-  border: 1px solid var(--aqua);
+  border: 1px solid var(--highlight);
   transition: .3s;
 }
 
@@ -138,12 +178,17 @@ a {
   text-decoration: none;
 }
 
+.add-new-project > svg,
+.task-tile > svg {
+  pointer-events: none;
+}
+
 /* Main body */
 #mainBody {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--main-bg);
   grid-column: 2;
   grid-row: 2;
   color: var(--dark-grey);
@@ -197,13 +242,13 @@ a {
 .circle {
   width: 25px;
   height: 25px;
-  border: 2px solid var(--orca-dark);
+  border: 2px solid var(--dark-accent);
   border-radius: 50%;
   margin: 8px;
 }
 
 .complete {
-  background-color: var(--orca-green);
+  background-color: var(--main-accent);
 }
 
 .tasks-title-div {
@@ -240,8 +285,8 @@ a {
 .modal-header {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(90deg, var(--orca-green) 0%, var(--orca-dark) 100%);
-  color: var(--white);
+  background: linear-gradient(90deg, var(--main-accent) 0%, var(--dark-accent) 100%);
+  color: var(--main-bg);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 20px;
@@ -276,17 +321,14 @@ a {
   padding: 8px;
 }
 
-span > i {
-  pointer-events: all;
-} 
 
 .modal-confirm {
   background-color: var(--light-aqua);
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .modal-confirm:hover {
-  background-color: var(--aqua);
+  background-color: var(--highlight);
   transition: all .2s ease-in-out;
   transform: scale(1.1);
 }
