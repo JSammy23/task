@@ -48,7 +48,7 @@
             <div class="projects-nav">
                 <div class="projects-nav-title">
                 <p>Projects (<span class="project-count"></span>)</p>
-                <span class="add-new-project">
+                <span title="Add New Project" class="add-new-project">
                     <i class="fa-solid fa-circle-plus fa-xl add-new-project" title="Add New Project" aria-hidden="true">
                     
                     </i>
@@ -80,7 +80,7 @@
                     <div class="tasks-title">
                         <p>Tasks (<span class="task-count"></span>)</p>
                         <!-- addTask btn needs to only be visible after selecting project link -->
-                        <button id="addTask"  ><i  class="fa-solid fa-circle-plus hide addTask" title="Add New Task"></i></button>
+                        <button title="Add New Task" id="addTask"  ><i  class="fa-solid fa-circle-plus hide addTask" title="Add New Task"></i></button>
                     </div>
                 </div>
 
@@ -96,11 +96,12 @@
         <!-- Modal -->
         <div id="modal" class="hide">
             <div class="modal-card">
-                <div class="modal-header">
+                <div class="modal-header standard">
                     <h2 class="modal-main-title">New Project</h2>
                     <i class="fa-regular fa-circle-xmark close close-modal fa-xl"></i>
                 </div>
                 <div class="modal-content">
+                    <p class="modalText"></p>
                     <form action="#"  id="projectForm">
                         <!-- New Project -->
                         <div class="projectModal hide">
@@ -157,12 +158,13 @@
 
                     </form>
                     <div class="modal-buttons">
-                        <button type="button" class="cancel-modal close">Cancel</button>
+                        <button type="button" id="cancelModal" class="cancel-modal close">Cancel</button>
                         <button type="button" id="modalConfirm" class="modal-confirm hide"></button>
                         <button type="submit"  form="projectForm" class="modal-confirm hide addProject">Add Project</button>
                         <button type="submit" id="addTaskConfirm" form="taskForm" class="modal-confirm hide" >Add Task</button>
                         <button id="saveEditProject" class="modal-confirm hide">Edit Project</button>
                         <button id="saveEditTask" class="modal-confirm hide">Edit Task</button>
+                        <button id="modalDelete" class="cancel-modal hide" >Delete</button>
                     </div>
                 </div>
             </div>
