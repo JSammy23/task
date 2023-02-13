@@ -34,7 +34,7 @@ const projects = (() => {
             ]
         })
     } else {
-        const projectsFromStorage = JSON.parse(localStorage.getItem('projectsList'));
+        const projectsFromStorage = JSON.parse(localStorage.getItem('projectList'));
         projectList = projectsFromStorage;
     };
 

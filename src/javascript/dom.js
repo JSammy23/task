@@ -12,7 +12,9 @@ const dom = (() => {
     
 
     function showProjects() {
-        projectCount.textContent = projects.projectList.length
+        localStorage.setItem('projectList', JSON.stringify(projects.projectList))
+
+        projectCount.textContent = projects.projectList.length;
         projectLinksDiv.textContent = ''
 
         for (let i = 0; i < projects.projectList.length; i++) {
@@ -80,7 +82,7 @@ const dom = (() => {
         let projectIndexEnd;
     
         
-        // localStorage.setItem('projects', JSON.stringify(projects.projectList));
+        localStorage.setItem('projectList', JSON.stringify(projects.projectList));
     
         // IF CLICKED ON PROJECT LINK
         if (menuTitle === 'project') {
