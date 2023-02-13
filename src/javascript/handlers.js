@@ -99,6 +99,15 @@ const handlers = (() => {
                 // console.log(projects.projectList[target.dataset.projectIndex].tasks[target.dataset.taskIndex])
             }
 
+            // Delete Task
+            if (target.id === 'deleteTaskBtn') {
+                dom.grabModal('deleteTask', target.dataset.projectIndex, target.dataset.taskIndex)
+            }
+
+            if (target.id === 'modalDelete') {
+                dom.grabModal('closeModal')
+            }
+
             // Task Completetion
             if (target.classList.contains('toggle-complete')) {
                 const taskIndex = target.parentElement.dataset.taskIndex
@@ -110,6 +119,11 @@ const handlers = (() => {
             if (target.classList.contains('close-modal')) {
                 dom.grabModal('closeModal')
             };
+
+            // Cancel Modal
+            if (target.id === 'cancelModal') {
+                dom.grabModal('closeModal')
+            }
 
         });
 

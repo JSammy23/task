@@ -41,10 +41,10 @@ const tasks = (() => {
         // Refresh tasks for DOM display
     }
 
-    function deleteTask(taskDetails, projectIndex) {
+    function deleteTask(taskIndex, projectIndex) {
         if (projectIndex > -1) {
             projects.projectList[projectIndex].tasks.splice(taskIndex, 1);
-            dom.getTasks('all'); // TESTING
+            dom.getTasks('all', projectIndex); // TESTING
         }
         
         // Refresh tasks for DOM display
@@ -59,7 +59,7 @@ const tasks = (() => {
         } else {
             projects.projectList[projectIndex].tasks[taskIndex].completed = false;
         }
-        dom.getTasks(clickedLink, projectIndex);
+        dom.getTasks(selectedLink, projectIndex);
     };
 
 

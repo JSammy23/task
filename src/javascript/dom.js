@@ -55,10 +55,15 @@ const dom = (() => {
             )
             const deleteBtn = document.createElement('button')
             const editBtn = document.createElement('button')
+            const editIcon = document.createElement('i')
+            const trashIcon = document.createElement('i')
             editBtn.id = 'editProjectBtn'
             deleteBtn.id = 'deleteBtn'
-            deleteBtn.textContent = 'D'
-            editBtn.textContent = 'E'
+            trashIcon.classList.add('fa-regular', 'fa-trash-can')
+            deleteBtn.append(trashIcon)
+            
+            editIcon.classList.add('fa-regular', 'fa-pen-to-square')
+            editBtn.append(editIcon)
 
             
             projectIconDiv.appendChild(editBtn)
@@ -134,7 +139,7 @@ const dom = (() => {
             taskCount.textContent = taskNumber;
 
 
-            taskDiv.classList.add('task-div', 'hover');
+            taskDiv.classList.add('task-div');
             taskDiv.setAttribute('data-project-index', i);
             taskDiv.setAttribute('data-task-index', j);
 
@@ -172,15 +177,27 @@ const dom = (() => {
 
             // Edit Task
             const editTaskBtn = document.createElement('button')
+            const editIcon = document.createElement('i')
             editTaskBtn.id = 'editTaskBtn'
-            editTaskBtn.textContent = "E"
             editTaskBtn.dataset.taskIndex = j
             editTaskBtn.dataset.projectIndex = i
+            editIcon.classList.add('fa-regular', 'fa-pen-to-square')
+            editTaskBtn.append(editIcon)
+
+            // Delete Task
+            const deleteBtn = document.createElement('button')
+            const trashIcon = document.createElement('i')
+            deleteBtn.dataset.taskIndex = j
+            deleteBtn.dataset.projectIndex = i
+            deleteBtn.id = 'deleteTaskBtn'
+            trashIcon.classList.add('fa-regular', 'fa-trash-can')
+            deleteBtn.append(trashIcon)
 
             taskTextDiv.appendChild(taskTitle);
             taskTextDiv.appendChild(taskNote);
             taskInfo.appendChild(taskDate);
             taskInfo.appendChild(editTaskBtn);
+            taskInfo.appendChild(deleteBtn);
             taskDiv.appendChild(circleIcon);
             taskDiv.appendChild(taskTextDiv);
             taskDiv.appendChild(taskInfo);
@@ -266,9 +283,9 @@ const dom = (() => {
     };
 
     function grabModal(action, projectIndex, taskIndex) {
-        // TODO
         const modalHeader = document.querySelector('.modal-header');
         const modalTitle = document.querySelector('.modal-main-title');
+        const modalText = document.querySelector('.modalText');
         const addProjectCard = document.querySelector('.projectModal');
         const projectTitleInput = document.getElementById('project-title');
         const addTaskCard =document.querySelector('.add-task');
@@ -280,6 +297,7 @@ const dom = (() => {
         const taskForm = document.getElementById('taskForm');
         const saveEditProjectBtn = document.getElementById('saveEditProject');
         const saveEditTaskBtn = document.getElementById('saveEditTask');
+        const deleteBtn = document.getElementById('modalDelete');
         function resetModal(){
             projectForm.reset()
             taskForm.reset()
@@ -289,6 +307,10 @@ const dom = (() => {
             addTaskCard.classList.replace('show', 'hide')
             saveEditProjectBtn.classList.add('hide')
             saveEditTaskBtn.classList.replace('show', 'hide')
+            deleteBtn.classList.replace('show', 'hide')
+            modalHeader.classList.remove('modal-delete')
+            modalHeader.classList.add('standard')
+            modalText.textContent = ''
         }
 
         if (action === 'addProject' || action === 'editProject') {
@@ -335,13 +357,18 @@ const dom = (() => {
             note.value = projects.projectList[projectIndex].tasks[taskIndex].note;
             dueDate.value = projects.projectList[projectIndex].tasks[taskIndex].dueDate;
             priority.value = projects.projectList[projectIndex].tasks[taskIndex].priority;
+        }
 
-
-            // TODO: 
-            // Swap out new button over addTask
-            // When new btn clicked save above propterties with new values
-            // refresh tasks
-
+        if (action === 'deleteTask') {
+            resetModal()
+            modalHeader.classList.replace('standard', 'modal-delete')
+            modalTitle.textContent = 'Delete Task'
+            deleteBtn.classList.replace('hide', 'show')
+            deleteBtn.dataset.projectIndex = projectIndex
+            deleteBtn.dataset.taskIndex = taskIndex
+            deleteBtn.onclick = tasks.deleteTask(taskIndex, projectIndex)
+            modal.classList.replace('hide', 'show')
+            modalText.textContent = 'Are you sure you want to delete this task?'
         }
 
         if (action === 'closeModal') {
