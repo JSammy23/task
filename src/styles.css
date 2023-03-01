@@ -100,6 +100,19 @@ button {
   font-size: 25px;
 }
 
+#logo {
+  transition: 0.7s ease-in-out;
+}
+
+#logoLink {
+  transition: 0.5s ease-in-out;
+  display: inline-block;
+}
+
+#logoLink:hover #logo {
+  transform: rotate(360deg);
+}
+
 /* General Styles */
 .hide {
   display: none;
